@@ -10,6 +10,7 @@ export const useProductsSearch = (search: Ref<string>, page:Ref<number>, deps: R
 }
 const fetchProductsSearch = async (search: string, page: number) => {
     const skip = (page-1) * 15
+    console.log(search)
     const respone = await fetch(`${process.env.VUE_APP_API}/products/search?q=${search}&skip=${skip}&limit=15`)
     return await respone.json();
 }

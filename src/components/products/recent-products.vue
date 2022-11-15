@@ -40,7 +40,7 @@ import {computed, onMounted, Ref, ref, watch} from "vue";
 import {IProduct} from "@/models/IProduct";
 import {useProductsQuery} from "@/hooks/useProductsQuery";
 const page = ref(1);
-let {data: products, isLoading} = useProducts(page, 15);
+let {data: products, isLoading} = useProducts(page, 15, page);
 const searchString = ref('');
 const sortedProducts = computed(() => {
   const productsCopy = products.value ? [...products?.value?.products] : products.value;

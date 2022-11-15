@@ -5,7 +5,7 @@ const fetchProducts = async (page:number, limit:number) => {
     const response = await fetch(`${process.env.VUE_APP_API}/products?limit=${limit}&skip=${skip}`);
     return await response.json()
 }
-export const useProducts = (page: Ref<number>, limit = 20)  => {
-    return useQuery(() => fetchProducts(page.value, limit), [page]);
+export const useProducts = (page: Ref<number>, limit = 15, deps: Ref[]|Ref)  => {
+    return useQuery(() => fetchProducts(page.value, limit), deps);
 }
 
