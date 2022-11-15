@@ -1,24 +1,11 @@
-import {onMounted, ref} from 'vue';
-import {IPhoto} from "@/models/IPhoto";
-
-export const useProducts = (limit = 10) => {
-    const isLoading = ref(false);
-    const products = ref<IPhoto[]|null>(null);
-    const error = ref('');
-    const fetching = async () => {
-        try {
-            isLoading.value = true;
-            const response = await fetch(`https://dummyjson.com/products?limit=${limit}`)
-            products.value = await response.json();
-        } catch (e: any) {
-            error.value = e.message
-        } finally {
-            isLoading.value = false;
-        }
-    }
-    onMounted(fetching)
-    return {
-        isLoading, products, error
-    };
+import {Ref} from 'vue';
+import {useQuery} from "@/utils/fetching/useQuery";
+const fetchProducts = async (page:number, limit:number) => {
+    const skip = (page-1) * limit
+    const response = await fetch(`${process.env.VUE_APP_API}/products?limit=${limit}&skip=${skip}`);
+    return await response.json()
+}
+export const useProducts = (page: Ref<number>, limit = 20)  => {
+    return useQuery(() => fetchProducts(page.value, limit), [page]);
 }
 

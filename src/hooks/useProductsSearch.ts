@@ -1,11 +1,16 @@
-import {onMounted, Ref, ref} from 'vue';
-import {IProduct} from "@/models/IProduct";
+import {Ref} from 'vue';
 import {useQuery} from "@/utils/fetching/useQuery";
-type Type = (limit?: number) => {isLoading: Ref<boolean>, products: Ref<{ products: IProduct[] }>, error: Ref<string>}
-export const useProducts :  Type = (limit = 10) => {
-    const {isLoading, data: products, error} = useQuery(`${process.env.VUE_APP_API}/products?limit=${limit}`);
-    return {
-        isLoading, products, error
-    };
+//type Type = (search: string, deps: any[]) => {isLoading: Ref<boolean>, products: Ref<{ products: IProduct[] }>, error: Ref<string>, refetch: (newSearch: string) => void}
+export const useProductsSearch = (search: Ref<string>, page:Ref<number>, deps: Ref[]|Ref) => {
+    return useQuery(()=>fetchProductsSearch(search.value, page.value), deps);
+    // const refetch = (newSearch: string) => {
+    //     fetchData(`${process.env.VUE_APP_API}/products/search?q=${newSearch}`);
+    // }
+
+}
+const fetchProductsSearch = async (search: string, page: number) => {
+    const skip = (page-1) * 15
+    const respone = await fetch(`${process.env.VUE_APP_API}/products/search?q=${search}&skip=${skip}&limit=15`)
+    return await respone.json();
 }
 

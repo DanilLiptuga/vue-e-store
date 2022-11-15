@@ -1,8 +1,8 @@
-export type IPhoto = {
-  id?: number;
-  title?: string;
+export type IProduct = {
+  id: number;
+  title: string;
   description?: string;
-  price?: number;
+  price: number;
   discountPercentage?: number;
   rating?: number;
   stock?: number;

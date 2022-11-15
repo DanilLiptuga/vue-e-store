@@ -1,0 +1,16 @@
+.header{
+  &__title{
+    font-size: 24px;
+    margin-left: 16px;
+  }
+}
+.drawer{
+  &-header {
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  &-nav{
+    padding: 0;
+    margin-top: 10px;
+  }
+}

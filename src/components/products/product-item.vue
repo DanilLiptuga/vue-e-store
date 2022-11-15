@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import {IProduct} from  '@/models/IProduct';
+import {IProduct} from '@/models/IProduct';
 import {defineComponent, PropType} from 'vue';
 import {useQuery} from "@/utils/fetching/useQuery";
 
@@ -24,4 +24,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped src="./product-item.scss"/>
+<style lang="scss" scoped src="./styles/product-item.scss"/>

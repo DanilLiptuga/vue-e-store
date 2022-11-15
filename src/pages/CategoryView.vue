@@ -4,19 +4,25 @@
       Loading...
     </div>
     <product-list v-else :products="products?.products"/>
+    <v-pagination
+        v-model="page"
+        :length="Math.ceil(products?.total / 15)"
+        circle
+    ></v-pagination>
   </v-container>
 </template>
 
 <script lang="ts" setup>
-import {useProductsSearch} from "@/hooks/useProductsSearch";
 import {useRoute} from "vue-router/dist/vue-router";
 import ProductList from "@/components/products/product-list.vue";
-import {watch} from "vue";
+import {watch, ref} from "vue";
+import {useCategoryProducts} from "@/hooks/useCategoryProducts";
 
 const router = useRoute();
-const searchString = router.params.query as string;
-let {isLoading, products, error, refetch} = useProductsSearch(searchString)
-watch(() => router.params.query, ()=>refetch(router.params.query as string), {deep: true})
+const category = ref(router.params.category as string);
+const page = ref(1)
+let {isLoading, data: products, error} = useCategoryProducts(category, page, [category, page])
+watch(() => router.params.category, ()=>category.value = router.params.category as string, {deep: true})
 </script>
 
 <style scoped>
