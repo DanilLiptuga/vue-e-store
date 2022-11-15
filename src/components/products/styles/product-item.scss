@@ -1,0 +1,22 @@
+.product{
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 12px 24px rgb(31 47 70 / 10%);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .3s all ease-in-out;
+  cursor: pointer;
+  &:hover{
+    box-shadow: 0 12px 24px rgb(31 47 70 / 15%);
+    transform: scale(1.02);
+  }
+  &__content{
+    padding: 8px;
+  }
+  &__image{
+    height: 160px;
+    object-fit: cover;
+
+  }
+}
