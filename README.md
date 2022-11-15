@@ -1,4 +1,4 @@
-# vuetest
+# Vue E-Store
 
 ## Project setup
 ```
