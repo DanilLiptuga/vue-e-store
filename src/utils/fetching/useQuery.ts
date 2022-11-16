@@ -1,15 +1,15 @@
-import {onMounted, ref, watch} from 'vue';
+import {onMounted, Ref, ref, watch} from 'vue';
 
-export const useQuery = (queryFn: () => any, deps?: any) => {
+export const useQuery = (queryFn: () => Promise<unknown>, deps?: Ref[]|Ref) => {
     const isLoading = ref(false);
-    const data = ref<any>(null);
+    const data = ref<unknown>(null);
     const error = ref('');
     const fetchData = async () => {
         try {
             isLoading.value = true;
             data.value = await queryFn();
         } catch (e: any) {
-            error.value = e.message
+            error.value = e
         } finally {
             isLoading.value = false;
         }

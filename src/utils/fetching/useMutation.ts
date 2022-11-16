@@ -1,14 +1,15 @@
-import {onMounted, ref, watch} from 'vue';
+import {ref} from 'vue';
+
 export type mutateOptions = {
     onSuccess?: (data: any)=>void,
     onError?: (error: any) => void,
     onSettled?: () => void
 }
-export const useMutation = (mutateFn: (...props : any[]) => any, options?: mutateOptions) => {
+export const useMutation = (mutateFn: (...props : unknown[]) => unknown, options?: mutateOptions) => {
     const isLoading = ref(false);
-    const data = ref<any>(null);
+    const data = ref<unknown>(null);
     const error = ref('');
-    const mutate = async (...props : any[]) => {
+    const mutate = async (...props : unknown[]) => {
         try {
             isLoading.value = true;
             if (options?.onSettled)
