@@ -1,4 +1,4 @@
-import {IProduct} from "@/models/IProduct";
+import {IProduct} from "@/types/models/IProduct";
 import {mutateOptions, useMutation} from "vue-usequery";
 
 
@@ -11,5 +11,5 @@ const createProduct = async (data: IProduct) => {
     return await response.json();
 }
 export const useCreateProductMutation = (options?: mutateOptions) => {
-    return useMutation((data) => createProduct(data as IProduct), options)
+    return useMutation<IProduct>((data) => createProduct(data as IProduct), options)
 }

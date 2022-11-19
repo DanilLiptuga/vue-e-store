@@ -3,6 +3,7 @@
     <div v-if="isLoading">
       Loading...
     </div>
+    <div v-else-if="error">An error has occurred during products request.</div>
     <product-list v-else :products="products?.products"/>
     <v-pagination
         v-model="page"

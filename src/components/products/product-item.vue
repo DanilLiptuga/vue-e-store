@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-import {IProduct} from '@/models/IProduct';
+import {IProduct} from '@/types/models/IProduct';
 import {defineComponent, PropType} from 'vue';
-import {useQuery} from "@/utils/fetching/useQuery";
 
 export default defineComponent({
   name: "product-item",

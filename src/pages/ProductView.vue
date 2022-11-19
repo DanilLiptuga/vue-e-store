@@ -2,11 +2,11 @@
   <div v-if="isLoading">
     Loading...
   </div>
+  <div v-else-if="error">An error has occurred during product request.</div>
   <product-single v-else :product="data" />
 </template>
 
 <script setup>
-import {useQuery} from "@/utils/fetching/useQuery";
 import {useRoute} from "vue-router/dist/vue-router";
 import ProductSingle from "@/components/products/product-single";
 import {useSingleProduct} from "@/hooks/useSingleProduct";

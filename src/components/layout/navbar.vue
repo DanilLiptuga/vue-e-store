@@ -8,7 +8,6 @@
       >
        <h2 class="drawer-header">Categories</h2>
         <v-divider></v-divider>
-
         <v-list class="drawer-nav" density="compact" nav v-if="categories">
           <v-list-item
               class="drawer-item"

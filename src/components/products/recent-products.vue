@@ -3,13 +3,11 @@
     <div v-if="isLoading">
       Loading...
     </div>
+    <div v-else-if="error">An error has occurred during products request.</div>
     <div v-else class="recent">
       <div class="recent-header">
         <div class="flex">
           <h1>New products</h1>
-          <v-btn @click="addProduct">
-            Add product
-          </v-btn>
         </div>
         <div class="recent-actions">
           <v-select
@@ -41,22 +39,14 @@
 <script setup lang="ts">
 import {useProducts} from "@/hooks/useProducts";
 import ProductList from "@/components/products/product-list.vue";
-import {computed, onMounted, Ref, ref, watch} from "vue";
-import {IProduct} from "@/models/IProduct";
-import {useProductsQuery} from "@/hooks/useProductsQuery";
-import {useCreateProductMutation} from "@/hooks/useCreateProductMutation";
+import {computed, ref} from "vue";
+import {IProduct} from "@/types/models/IProduct";
+
 const page = ref(1);
 let {data: products, isLoading} = useProducts(page, 15, page);
-const {data, mutate, isLoading: loading, error} = useCreateProductMutation({
-  onSuccess: data => console.log(data),
-  onError: error => console.log(error)
-})
 const searchString = ref('');
-const addProduct = () => {
-  mutate({ title: 'BMW Pencil232323',})
-}
 const sortedProducts = computed(() => {
-  const productsCopy = products.value ? [...products?.value?.products] : products.value;
+  const productsCopy : IProduct[] = products.value ? [...products?.value?.products as IProduct[]] : products.value;
   switch (sortType.value){
     case "title":
       return productsCopy?.sort((a: IProduct, b: IProduct) => a.title?.localeCompare(b.title))

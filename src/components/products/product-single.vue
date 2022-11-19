@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import {PropType,ref} from "vue";
-import {IProduct} from "@/models/IProduct";
+import {IProduct} from "@/types/models/IProduct";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Thumbs } from 'swiper';
 import 'swiper/css';

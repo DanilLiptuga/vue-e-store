@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {IProduct} from "@/models/IProduct";
+import {IProduct} from "@/types/models/IProduct";
 import {PropType} from 'vue';
 import ProductItem from "@/components/products/product-item.vue";
 
