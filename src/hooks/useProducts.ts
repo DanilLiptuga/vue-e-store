@@ -1,5 +1,5 @@
 import {Ref} from 'vue';
-import {useQuery} from "@/utils/fetching/useQuery";
+import {useQuery} from "vue-usequery";
 const fetchProducts = async (page:number, limit:number) => {
     const skip = (page-1) * limit
     const response = await fetch(`${process.env.VUE_APP_API}/products?limit=${limit}&skip=${skip}`);

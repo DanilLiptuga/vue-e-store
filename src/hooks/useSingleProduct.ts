@@ -1,4 +1,4 @@
-import {useQuery} from "@/utils/fetching/useQuery";
+import {useQuery} from "vue-usequery";
 
 export const useSingleProduct = (id: number) => useQuery(() => fetchProduct(id))
 const fetchProduct =  async (id: number) => {

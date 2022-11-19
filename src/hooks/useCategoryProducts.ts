@@ -1,6 +1,6 @@
-import {onMounted, Ref, ref} from 'vue';
-import {IProduct} from "@/models/IProduct";
-import {useQuery} from "@/utils/fetching/useQuery";
+import {Ref} from 'vue';
+import {useQuery} from "vue-usequery";
+
 
 export const useCategoryProducts = (category: Ref<string>, page: Ref<number>, deps: Ref[]|Ref) => {
     return useQuery(()=>fetchCategoryProducts(category.value, page.value), deps);

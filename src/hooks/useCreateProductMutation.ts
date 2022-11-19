@@ -1,5 +1,6 @@
 import {IProduct} from "@/models/IProduct";
-import {mutateOptions, useMutation} from "@/utils/fetching/useMutation";
+import {mutateOptions, useMutation} from "vue-usequery";
+
 
 const createProduct = async (data: IProduct) => {
     const response = await fetch('https://dummyjson.com/products/add', {
@@ -10,5 +11,5 @@ const createProduct = async (data: IProduct) => {
     return await response.json();
 }
 export const useCreateProductMutation = (options?: mutateOptions) => {
-    return useMutation(createProduct, options)
+    return useMutation((data) => createProduct(data as IProduct), options)
 }

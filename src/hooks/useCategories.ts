@@ -1,7 +1,4 @@
-import {onMounted, Ref, ref} from 'vue';
-import {IProduct} from "@/models/IProduct";
-import {useQuery} from "@/utils/fetching/useQuery";
-//type Type = () => {isLoading: Ref<boolean>, categories: Ref<string>, error: Ref<string>}
+import {useQuery} from "vue-usequery";
 export const useCategories = () => {
     return useQuery(()=>fetchCategories());
 }

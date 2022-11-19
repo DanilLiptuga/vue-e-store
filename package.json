@@ -14,6 +14,7 @@
     "swiper": "^8.4.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue-usequery": "github:DanilLiptuga/vue-usequery",
     "vuetify": "^3.0.0",
     "vuex": "^4.0.0"
   },
