@@ -11,7 +11,8 @@
           :title="title"/>
       <product-list :products="sortedAndSearchedProducts"/>
       <v-pagination
-          v-model="page"
+          @update:modelValue="changePage"
+          :model-value="page"
           :length="Math.ceil(products?.total / 15)"
           circle
       ></v-pagination>
@@ -31,12 +32,22 @@ export default defineComponent({
   components: {HeadingWithFilter, ProductList},
   props: {
     title: String,
+    page: {
+      type: Number,
+      default: 1
+    },
     products: {
       type: Object as PropType<{ products: IProduct[] }>,
       required: true,
     },
     isLoading: Boolean
   },
+  methods: {
+    changePage: function (value: string) {
+      this.$emit("update:page", value)
+    }
+  },
+
   setup(props){
     const searchString = ref('');
     const sortedProducts = computed(() => {
