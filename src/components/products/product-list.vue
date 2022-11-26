@@ -18,10 +18,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.product-list{
-  display: grid;
-  grid-template-columns: repeat(4,minmax(0,1fr));
-  gap: 16px;
-}
-</style>
+<style scoped lang="scss" src="./styles/product-list.scss"/>

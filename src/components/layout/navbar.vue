@@ -24,7 +24,7 @@
       <v-toolbar class="v-theme--dark container">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <router-link to="/">
-          <h1 class="header__title">E-Store</h1>
+          <h1 class="header-title">E-Store</h1>
         </router-link>
         <v-spacer></v-spacer>
 
@@ -53,9 +53,6 @@
             <v-icon>mdi-heart-outline</v-icon>
           </v-btn>
         </div>
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
       </v-toolbar>
 
     </header>
@@ -94,19 +91,3 @@ export default {
 </script>
 
 <style lang="scss" scoped src="./styles/navbar.scss"/>
-<style lang="scss">
-.search-enter-active,
-.search-leave-active {
-  transition: all 0.3s ease-in-out;
-}
-.search-enter-to{
-  width: 200px !important;
-}
-.search-enter-from,
-.search-leave-to {
-  width: 0 !important;
-}
-.search{
-  width: 200px;
-}
-</style>

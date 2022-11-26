@@ -1,8 +1,22 @@
 .header{
-  &__title{
+  &-title{
     font-size: 24px;
     margin-left: 16px;
   }
+}
+.search-enter-active,
+.search-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+.search-enter-to{
+  width: 200px !important;
+}
+.search-enter-from,
+.search-leave-to {
+  width: 0 !important;
+}
+.search{
+  width: 200px;
 }
 .drawer{
   &-header {
@@ -12,5 +26,18 @@
   &-nav{
     padding: 0;
     margin-top: 10px;
+  }
+}
+@media screen and (max-width: 480px){
+  .header{
+    &-title{
+     display: none;
+    }
+  }
+  .search-enter-to{
+    width: 150px !important;
+  }
+  .search{
+    width: 150px;
   }
 }

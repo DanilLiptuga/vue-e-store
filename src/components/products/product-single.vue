@@ -4,14 +4,11 @@
       <h1 class="product__title">{{product?.title}}</h1>
       <div class="product__main">
         <div class="product__left">
-          <swiper class="product__image" :slides-per-view="1" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }">
-            <swiper-slide :key="image" v-for="image in product?.images">
+          <swiper class="product__images" :slides-per-view="1" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }">
+            <swiper-slide class="product__image" :key="image" v-for="image in product?.images">
               <img :src="image" :alt="product?.title"/>
             </swiper-slide>
           </swiper>
-
-          <!-- Thumbs Swiper -> store swiper instance -->
-          <!-- It is also required to set watchSlidesProgress prop -->
           <swiper
               :modules="[Thumbs]"
               watch-slides-progress

@@ -1,15 +1,6 @@
 <template>
   <v-container>
-    <div v-if="isLoading">
-      Loading...
-    </div>
-    <div v-else-if="error">An error has occurred during products request.</div>
-    <product-list v-else :products="products?.products"/>
-    <v-pagination
-        v-model="page"
-        :length="Math.ceil(products?.total / 15)"
-        circle
-    ></v-pagination>
+    <products-with-filter :products="products" :is-loading="isLoading" title="Search products"/>
   </v-container>
 </template>
 
@@ -18,6 +9,7 @@ import {useProductsSearch} from "@/hooks/useProductsSearch";
 import {useRoute} from "vue-router/dist/vue-router";
 import ProductList from "@/components/products/product-list.vue";
 import {watch, ref} from "vue";
+import ProductsWithFilter from "@/components/common/products-with-filter.vue";
 const router = useRoute();
 const page = ref(1);
 const searchString = ref(router.params.query as string);
