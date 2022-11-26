@@ -25,11 +25,9 @@
 </template>
 
 <script lang="ts">
-import {computed, PropType, ref} from "vue";
-import {IProduct} from "@/types/models/IProduct";
-import ProductList from "@/components/products/product-list.vue";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "heading-with-filter",
   props: {
     title: {type: String, required: true},
@@ -61,7 +59,7 @@ export default {
     ];
     return {items}
     }
-}
+})
 </script>
 
 <style scoped src="./styles/heading-with-filter.scss" lang="scss"/>
